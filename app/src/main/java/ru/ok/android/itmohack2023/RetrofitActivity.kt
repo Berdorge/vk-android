@@ -1,10 +1,11 @@
 package ru.ok.android.itmohack2023
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.happy.easter.HappyEasterPerformance
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -15,12 +16,13 @@ import ru.ok.android.itmohack2023.retrofit.CatsApi
 import ru.ok.android.itmohack2023.retrofit.RetrofitProvider
 import ru.ok.android.itmohack2023.retrofit.dto.CatFact
 
-class RetrofitActivity : Activity() {
+class RetrofitActivity : AppCompatActivity() {
 
     private val compositeDisposable = CompositeDisposable()
 
     private val catsApi: CatsApi by lazy {
         val retrofit = RetrofitProvider.retrofit
+
         CatsApi.provideCatApi(retrofit)
     }
 
@@ -28,6 +30,13 @@ class RetrofitActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_retrofit)
         val textView = findViewById<TextView>(R.id.tv_text)
+
+        HappyEasterPerformance.getInstance()
+            .addFeature(
+                Regex("https://catfact.ninja/fact"),
+                "RetrofitActivity",
+                lifecycle
+            )
 
         findViewById<View>(R.id.rx).setOnClickListener {
             val disposable = catsApi.getFactRx()

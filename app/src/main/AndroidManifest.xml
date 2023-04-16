@@ -34,11 +34,12 @@
         <activity android:name="ru.ok.android.itmohack2023.JNIActivity" />
         <activity android:name="ru.ok.android.itmohack2023.OkHttpActivity" />
         <activity android:name="ru.ok.android.itmohack2023.ExoPlayerActivity" />
-        <activity android:name="ru.ok.android.itmohack2023.FrescoActivity"/>
+        <activity android:name="ru.ok.android.itmohack2023.FrescoActivity" />
         <activity android:name="ru.ok.android.itmohack2023.RetrofitActivity" />
-        <activity android:name="ru.ok.android.itmohack2023.GlideActivity"/>
-        <activity android:name="ru.ok.android.itmohack2023.PicassoActivity"/>
-        <activity android:name="ru.ok.android.itmohack2023.DownloadManagerActivity"/>
+        <activity android:name="ru.ok.android.itmohack2023.GlideActivity" />
+        <activity android:name="ru.ok.android.itmohack2023.PicassoActivity" />
+        <activity android:name="ru.ok.android.itmohack2023.DownloadManagerActivity" />
+        <activity android:name=".EndlessLoopActivity" />
     </application>
 
 </manifest>

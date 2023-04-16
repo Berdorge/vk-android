@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.happy.easter.HappyEasterPerformance
 
 class GlideActivity : AppCompatActivity() {
     private lateinit var cat1: ImageView
@@ -13,6 +14,13 @@ class GlideActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_glide)
+
+        HappyEasterPerformance.getInstance()
+            .addFeature(
+                Regex("https://cdn2.thecatapi.com/images/.*"),
+                "GlideActivity",
+                lifecycle
+            )
 
         cat1 = findViewById(R.id.cat_photo_1)
         cat2 = findViewById(R.id.cat_photo_2)

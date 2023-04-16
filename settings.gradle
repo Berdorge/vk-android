@@ -14,3 +14,9 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ItmoHack2023"
 include ':app'
+includeBuild('happy-easter') {
+    dependencySubstitution {
+        substitute module('happy.easter:metric') using project(':metric')
+        substitute module('happy.easter:transformer') using project(':transformer')
+    }
+}

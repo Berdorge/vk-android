@@ -7,6 +7,7 @@ import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.source.hls.HlsMediaSource
 import com.google.android.exoplayer2.ui.StyledPlayerView
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
+import com.happy.easter.HappyEasterPerformance
 
 class ExoPlayerActivity : AppCompatActivity() {
 
@@ -17,6 +18,14 @@ class ExoPlayerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exo_player)
+
+        HappyEasterPerformance.getInstance()
+            .addFeature(
+                Regex("https://bitdash-a.akamaihd.net/content/sintel.*"),
+                "ExoPlayerActivity",
+                lifecycle
+            )
+
         preparePlayer()
     }
 
@@ -27,7 +36,8 @@ class ExoPlayerActivity : AppCompatActivity() {
         playerView.player = exoPlayer
         val defaultHttpDataSourceFactory = DefaultHttpDataSource.Factory()
         val mediaItem = MediaItem.fromUri(URL)
-        val mediaSource = HlsMediaSource.Factory(defaultHttpDataSourceFactory).createMediaSource(mediaItem)
+        val mediaSource =
+            HlsMediaSource.Factory(defaultHttpDataSourceFactory).createMediaSource(mediaItem)
         exoPlayer?.apply {
             setMediaSource(mediaSource)
             seekTo(playbackPosition)

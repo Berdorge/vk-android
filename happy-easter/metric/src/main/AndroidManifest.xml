@@ -1,0 +1,15 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.happy.easter">
+
+    <application android:usesCleartextTraffic="true">
+        <provider
+            android:name="com.happy.easter.HappyEasterContentProvider"
+            android:authorities="com.happy.easter.HappyEasterContentProvider"
+            android:exported="false" />
+
+        <service
+            android:name="com.happy.easter.HappyEasterService"
+            android:exported="false"
+            android:process=":happy_easter_service" />
+    </application>
+</manifest>

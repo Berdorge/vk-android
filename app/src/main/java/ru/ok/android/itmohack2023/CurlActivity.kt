@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.setPadding
+import com.happy.easter.HappyEasterPerformance
 import org.json.JSONArray
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -31,9 +32,16 @@ class CurlActivity : AppCompatActivity() {
                   """.trimIndent()
 
         try {
+            val metric = HappyEasterPerformance.getInstance()
+                .newHttpMetric("https://cat-fact.herokuapp.com/facts", "GET")
+            metric.start()
             val process = Runtime.getRuntime().exec(command)
             val response = BufferedReader(InputStreamReader(process.inputStream)).readLine()
             val textJson = JSONArray(response)
+            metric.setResponseCode(200)
+            metric.setContentType("application/json")
+            metric.setResponseBytes(response.length.toLong())
+            metric.stop()
 
             val facts = arrayListOf<String>()
             for (i in 0 until textJson.length()) {

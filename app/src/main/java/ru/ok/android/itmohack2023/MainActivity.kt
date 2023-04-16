@@ -45,5 +45,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.downloadmanager).setOnClickListener {
             startActivity(Intent(this, DownloadManagerActivity::class.java))
         }
+        findViewById<View>(R.id.endless_loop).setOnClickListener {
+            startActivity(Intent(this, EndlessLoopActivity::class.java))
+        }
     }
 }

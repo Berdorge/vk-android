@@ -3,7 +3,7 @@ package ru.ok.android.itmohack2023
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
+import com.happy.easter.HappyEasterPerformance
 import com.squareup.picasso.Picasso
 
 class PicassoActivity : AppCompatActivity() {
@@ -19,6 +19,13 @@ class PicassoActivity : AppCompatActivity() {
         dog2 = findViewById(R.id.dog_photo_2)
         dog3 = findViewById(R.id.dog_photo_3)
 
+        HappyEasterPerformance.getInstance()
+            .addFeature(
+                Regex("https://cdn2.thedogapi.com/images/.*"),
+                "PicassoActivity",
+                lifecycle
+            )
+
         bindImages()
     }
 
@@ -29,9 +36,12 @@ class PicassoActivity : AppCompatActivity() {
 
     private fun bindImages() {
 
-        Picasso.get().load(URLS[(0 until size).random()]).placeholder(getDrawable(R.drawable.ico_dog)!!).into(dog1)
-        Picasso.get().load(URLS[(0 until size).random()]).placeholder(getDrawable(R.drawable.ico_dog)!!).into(dog2)
-        Picasso.get().load(URLS[(0 until size).random()]).placeholder(getDrawable(R.drawable.ico_dog)!!).into(dog3)
+        Picasso.get().load(URLS[(0 until size).random()])
+            .placeholder(getDrawable(R.drawable.ico_dog)!!).into(dog1)
+        Picasso.get().load(URLS[(0 until size).random()])
+            .placeholder(getDrawable(R.drawable.ico_dog)!!).into(dog2)
+        Picasso.get().load(URLS[(0 until size).random()])
+            .placeholder(getDrawable(R.drawable.ico_dog)!!).into(dog3)
     }
 
     companion object {

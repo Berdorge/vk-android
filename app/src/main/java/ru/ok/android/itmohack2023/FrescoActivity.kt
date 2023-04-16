@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.facebook.drawee.view.SimpleDraweeView
 import com.facebook.imagepipeline.request.ImageRequestBuilder
 import com.google.android.material.button.MaterialButton
+import com.happy.easter.HappyEasterPerformance
 
 class FrescoActivity : AppCompatActivity() {
 
@@ -17,6 +18,13 @@ class FrescoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fresco)
+
+        HappyEasterPerformance.getInstance()
+            .addFeature(
+                Regex("https://frescolib.org/static/sample-images/.*"),
+                "FrescoActivity",
+                lifecycle
+            )
 
         animalsView = findViewById(R.id.animals_image)
         anotherBtn = findViewById(R.id.another_btn)
